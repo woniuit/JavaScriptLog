@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // function getSomething() {
+    //     return "something";
+    // }
+
+    // async function testAsync() {
+    //     return Promise.resolve("hello async");
+    // }
+
+    // async function test() {
+    //     const v1 = await getSomething();
+    //     const v2 = await testAsync();
+    //     console.log(88)
+    //     console.log(v1, v2);
+    // }
+
+    // test();
+    let promiseDemo = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let random = Math.random()
+            if (random >= 0.5) {
+                resolve('success')
+            } else {
+                reject('failed')
+            }
+        }, 1000)
+    })
+
+    async function test() {
+        let result = await promiseDemo
+        return result //这里的result是promiseDemo成功状态的值，如果失败了，代码就直接跳到下面的catch了
+    }
+
+    test().then(response => {
+        console.log(response)
+    }).catch(error => {
+        console.log(error)
+    })
+
+    // 2
+    // function timeout(ms) {
+    //     return new Promise((resolve) => {
+    //         setTimeout(resolve, ms);
+    //     });
+    // }
+
+    // async function asyncPrint(value, ms) {
+    //     await timeout(ms);
+    //     console.log(value)
+    // }
+
+    // asyncPrint('hello world', 50);
+</script>
